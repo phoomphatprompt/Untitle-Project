@@ -1,14 +1,10 @@
 pipeline {
-  agent {
-    docker {
-      image 'python:3.12-slim'
-    }
-  }
+  agent any
 
   stages {
     stage('Run Python') {
       steps {
-        sh 'python app.py'
+        sh 'python3 app.py'
       }
     }
   }
