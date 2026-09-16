@@ -2,9 +2,16 @@ pipeline {
   agent any
 
   stages {
-    stage('Run Python') {
+    stage('Hello Jenkins') {
       steps {
-        sh 'python3 app.py'
+        echo 'Hello World from Jenkins!'
+      }
+    }
+
+    stage('Show Environment') {
+      steps {
+        sh 'echo Running on Jenkins'
+        sh 'pwd'
       }
     }
   }
