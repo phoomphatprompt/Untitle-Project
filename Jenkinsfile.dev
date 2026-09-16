@@ -1,0 +1,32 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Checkout') {
+      steps {
+        echo '1. Source code has been checked out from GitHub'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        echo '2. Building application...'
+        sh 'echo Build completed'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        echo '3. Running tests...'
+        sh 'echo All tests passed'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        echo '4. Deploying application...'
+        sh 'echo Deployment completed'
+      }
+    }
+  }
+}
