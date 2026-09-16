@@ -1,18 +1,37 @@
 pipeline {
   agent any
 
+  environment {
+    APP_NAME = 'Hello Jenkins App'
+    ENVIRONMENT = 'development'
+  }
+
   stages {
-    stage('Hello Jenkins') {
+    stage('Show Build Information') {
       steps {
-        echo 'Hello World from Jenkins!'
+        echo "Application: ${APP_NAME}"
+        echo "Environment: ${ENVIRONMENT}"
+        echo "Build number: ${BUILD_NUMBER}"
+        echo "Job name: ${JOB_NAME}"
+        echo "Workspace: ${WORKSPACE}"
       }
     }
 
-    stage('Show Environment') {
+    stage('Build') {
       steps {
-        sh 'echo Running on Jenkins'
-        sh 'pwd'
+        echo "Building ${APP_NAME} for ${ENVIRONMENT}..."
+        sh 'echo Build completed'
       }
+    }
+  }
+
+  post {
+    success {
+      echo "Build #${BUILD_NUMBER} completed successfully."
+    }
+
+    always {
+      echo 'Pipeline has finished.'
     }
   }
 }
